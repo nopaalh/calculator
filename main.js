@@ -12,6 +12,9 @@ keypad.addEventListener("click", (e) => {
 });
 
 const appendNumber = (number) => {
+  if (lowerScreenNumber.textContent.length === 16) {
+    return;
+  }
   if (lowerScreenNumber.textContent == 0) {
     lowerScreenNumber.textContent = "";
   }
