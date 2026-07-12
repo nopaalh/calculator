@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* width: 100%;
+  height: 100%; */
+  /* background-color: black; */
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainContainer {
+  background-color: black;
+  width: 440px;
+  height: 956px;
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+  padding: 10px;
+  border-radius: 64px;
+}
+
+.mainContainer .screen {
+  flex: 1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 20px 30px;
+  font-size: 80px;
+  font-weight: 300;
+  white-space: nowrap;
+  transform: font-size 0.1s ease;
+}
+
+.screen .upper {
+  font-size: 40px;
+  opacity: 0.5;
+  font-weight: 400;
+  margin-top: auto;
+}
+
+.screen .lower {
+  font-weight: 400;
+  margin: 0;
+}
+
+.keypad {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.row button {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.btn {
+  flex: 1;
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: lighter;
+}
+
+.btnOrange {
+  background-color: #ff9f0a;
+}
+
+.btnOrange:active {
+  background-color: #ff9d0aab;
+}
+
+.btnLight {
+  background-color: #a5a5a5;
+}
+.btnLight:active {
+  background-color: #a5a5a5a2;
+}
+
+.btnDark {
+  background-color: #333333;
+}
+.btnDark:active {
+  background-color: #333333a6;
+}
