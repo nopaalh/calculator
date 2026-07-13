@@ -18,14 +18,30 @@ keypad.addEventListener("click", (e) => {
       clear();
     }
   } else if (e.target.classList.contains("btnOrange")) {
-    if (e.target.textContent === "=") {
-      if (operator !== null) {
-        operate(firstNumber, operator, Number(lowerScreenNumber.textContent));
-      }
+    const value = e.target.textContent;
+    if (value === "=") {
+      if (operator === null) return;
+      const secondNumber = Number(lowerScreenNumber.textContent);
+      const result = operate(firstNumber, operator, secondNumber);
+      lowerScreenNumber.textContent = result;
+      upperScreenNumber.textContent = "";
+
+      firstNumber = result;
+      operator = null;
+      shouldReset = true;
       return;
     }
-    operator = e.target.textContent;
-    firstNumber = Number(lowerScreenNumber.textContent);
+
+    if (operator !== null && !shouldReset) {
+      const secondNumber = Number(lowerScreenNumber.textContent);
+      const result = operate(firstNumber, operator, secondNumber);
+      lowerScreenNumber.textContent = result;
+      firstNumber = result;
+    } else {
+      firstNumber = Number(lowerScreenNumber.textContent);
+    }
+    operator = value;
+    upperScreenNumber.textContent = `${firstNumber} ${operator}`;
     shouldReset = true;
   }
 });
@@ -79,15 +95,13 @@ const sum = (a, b) => {
 const operate = (firstNumber, operator, secondNumber) => {
   switch (operator) {
     case "+":
-      let ans = sum(firstNumber, secondNumber);
-      lowerScreenNumber.textContent = ans;
-      upperScreenNumber.textContent = "";
+      return sum(firstNumber, secondNumber);
       break;
     case "-":
       break;
-    case "/":
+    case "÷":
       break;
-    case "*":
+    case "×":
       break;
     default:
       break;
