@@ -14,8 +14,10 @@ keypad.addEventListener("click", (e) => {
   } else if (e.target.classList.contains("btnLight")) {
     if (e.target.textContent === "AC") {
       allClear();
+      changeFontSize(lowerScreenNumber.textContent.length);
     } else if (e.target.textContent === "C") {
       clear();
+      changeFontSize(lowerScreenNumber.textContent.length);
     }
   } else if (e.target.classList.contains("btnOrange")) {
     const value = e.target.textContent;
@@ -24,6 +26,7 @@ keypad.addEventListener("click", (e) => {
       const secondNumber = Number(lowerScreenNumber.textContent);
       const result = operate(firstNumber, operator, secondNumber);
       lowerScreenNumber.textContent = result;
+      changeFontSize(lowerScreenNumber.textContent.length);
       upperScreenNumber.textContent = "";
 
       firstNumber = result;
@@ -36,6 +39,7 @@ keypad.addEventListener("click", (e) => {
       const secondNumber = Number(lowerScreenNumber.textContent);
       const result = operate(firstNumber, operator, secondNumber);
       lowerScreenNumber.textContent = result;
+      changeFontSize(lowerScreenNumber.textContent.length);
       firstNumber = result;
     } else {
       firstNumber = Number(lowerScreenNumber.textContent);
@@ -79,17 +83,29 @@ const clear = () => {
 const changeFontSize = (len) => {
   if (len <= 5) {
     lowerScreenNumber.style.fontSize = "80px";
-  } else if (len === 6) {
+  } else if (len <= 7) {
     lowerScreenNumber.style.fontSize = "60px";
-  } else if (len === 8) {
+  } else if (len <= 10) {
     lowerScreenNumber.style.fontSize = "50px";
-  } else if (len === 12) {
-    lowerScreenNumber.style.fontSize = "42px";
+  } else {
+    lowerScreenNumber.style.fontSize = "39px";
   }
 };
 
 const sum = (a, b) => {
   return a + b;
+};
+
+const min = (a, b) => {
+  return a - b;
+};
+
+const multiply = (a,b) => {
+  return a*b;
+};
+
+const divide = (a,b) => {
+  return a/b;
 };
 
 const operate = (firstNumber, operator, secondNumber) => {
@@ -98,10 +114,13 @@ const operate = (firstNumber, operator, secondNumber) => {
       return sum(firstNumber, secondNumber);
       break;
     case "-":
+      return min(firstNumber,secondNumber);
       break;
     case "÷":
+      return divide(firstNumber,secondNumber);
       break;
     case "×":
+      return multiply(firstNumber,secondNumber);
       break;
     default:
       break;
