@@ -26,8 +26,21 @@ const appendNumber = (number) => {
     lowerScreenNumber.textContent = "";
   }
   lowerScreenNumber.textContent += number;
+  changeFontSize(lowerScreenNumber.textContent.length);
 };
 
 const resetInput = () => {
   lowerScreenNumber.textContent = "0";
+};
+
+const changeFontSize = (len) => {
+  if (len <= 5) {
+    lowerScreenNumber.style.fontSize = "80px";
+  } else if (len === 6) {
+    lowerScreenNumber.style.fontSize = "60px";
+  } else if (len === 8) {
+    lowerScreenNumber.style.fontSize = "50px";
+  } else if (len === 12) {
+    lowerScreenNumber.style.fontSize = "42px";
+  }
 };
