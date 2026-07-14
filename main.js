@@ -10,6 +10,11 @@ const keypad = document.querySelector(".keypad");
 keypad.addEventListener("click", (e) => {
   if (!e.target.matches("button")) return;
   if (e.target.classList.contains("btnDark")) {
+    if (e.target.textContent === "+/-") {
+      toggleSign();
+      changeFontSize(lowerScreenNumber.textContent.length);
+      return;
+    }
     appendNumber(e.target.textContent);
   } else if (e.target.classList.contains("btnLight")) {
     if (e.target.textContent === "AC") {
@@ -90,6 +95,13 @@ const percent = () => {
   } else {
     lowerScreenNumber.textContent = String(current / 100);
   }
+  shouldReset = false;
+};
+
+const toggleSign = () => {
+  const current = Number(lowerScreenNumber.textContent);
+  if (current === 0) return;
+  lowerScreenNumber.textContent = String(current * -1);
   shouldReset = false;
 };
 
