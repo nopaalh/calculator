@@ -18,6 +18,9 @@ keypad.addEventListener("click", (e) => {
     } else if (e.target.textContent === "C") {
       clear();
       changeFontSize(lowerScreenNumber.textContent.length);
+    } else if (e.target.textContent === "%") {
+      percent();
+      changeFontSize(lowerScreenNumber.textContent.length);
     }
   } else if (e.target.classList.contains("btnOrange")) {
     const value = e.target.textContent;
@@ -77,6 +80,16 @@ const allClear = () => {
 
 const clear = () => {
   lowerScreenNumber.textContent = "0";
+  shouldReset = false;
+};
+
+const percent = () => {
+  const current = Number(lowerScreenNumber.textContent);
+  if (firstNumber !== null && operator !== null) {
+    lowerScreenNumber.textContent = String(firstNumber * (current / 100));
+  } else {
+    lowerScreenNumber.textContent = String(current / 100);
+  }
   shouldReset = false;
 };
 
