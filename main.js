@@ -130,6 +130,9 @@ const multiply = (a,b) => {
 };
 
 const divide = (a,b) => {
+  if(b === 0){
+    alert("Cant devide by 0.")
+  }
   return a/b;
 };
 
