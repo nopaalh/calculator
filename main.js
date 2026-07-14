@@ -70,7 +70,7 @@ const appendNumber = (number) => {
   if (lowerScreenNumber.textContent === "0" || shouldReset) {
     if (shouldReset) {
       upperScreenNumber.textContent =
-        lowerScreenNumber.textContent + " " + operator;
+        firstNumber + " " + operator;
       shouldReset = false;
     }
     lowerScreenNumber.textContent = "";
