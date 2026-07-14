@@ -145,7 +145,6 @@ const multiply = (a,b) => {
 
 const divide = (a,b) => {
   if(b === 0){
-    alert("Cant divide by 0.");
     return "Error";
   }
   return parseFloat((a/b).toPrecision(10));
