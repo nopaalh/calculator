@@ -15,6 +15,11 @@ keypad.addEventListener("click", (e) => {
       changeFontSize(lowerScreenNumber.textContent.length);
       return;
     }
+    if (e.target.textContent === ".") {
+      appendDecimal();
+      changeFontSize(lowerScreenNumber.textContent.length);
+      return;
+    }
     appendNumber(e.target.textContent);
   } else if (e.target.classList.contains("btnLight")) {
     if (e.target.textContent === "AC") {
@@ -103,6 +108,15 @@ const toggleSign = () => {
   if (current === 0) return;
   lowerScreenNumber.textContent = String(current * -1);
   shouldReset = false;
+};
+
+const appendDecimal = () => {
+  if (shouldReset) {
+    lowerScreenNumber.textContent = "0";
+    shouldReset = false;
+  }
+  if (lowerScreenNumber.textContent.includes(".")) return;
+  lowerScreenNumber.textContent += ".";
 };
 
 const changeFontSize = (len) => {
