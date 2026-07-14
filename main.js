@@ -62,7 +62,7 @@ const appendNumber = (number) => {
   if (lowerScreenNumber.textContent.length === 16) {
     return;
   }
-  if (lowerScreenNumber.textContent == 0 || shouldReset) {
+  if (lowerScreenNumber.textContent === "0" || shouldReset) {
     if (shouldReset) {
       upperScreenNumber.textContent =
         lowerScreenNumber.textContent + " " + operator;
@@ -131,9 +131,10 @@ const multiply = (a,b) => {
 
 const divide = (a,b) => {
   if(b === 0){
-    alert("Cant devide by 0.")
+    alert("Cant divide by 0.");
+    return "Error";
   }
-  return a/b;
+  return parseFloat((a/b).toPrecision(10));
 };
 
 const operate = (firstNumber, operator, secondNumber) => {
